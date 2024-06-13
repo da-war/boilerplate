@@ -3,14 +3,16 @@ import React from "react";
 import AppTextInput from "../AppTextInput";
 import ErrorMessage from "../ErrorMessage";
 
-import { useFormikContext } from "formik";
+import { FormikContextType, FormikValues, useFormikContext } from "formik";
 
 interface AppFormFieldProps {
   name: string;
 }
 
 const AppFormField: React.FC<AppFormFieldProps> = ({ name, ...otherProps }) => {
-  const { setFieldTouched, handleChange, errors, touched } = useFormikContext();
+  //add types to formik context
+  const { setFieldTouched, handleChange, errors, touched } =
+    useFormikContext<FormikValues>() as FormikContextType<FormikValues>;
 
   return (
     <>
